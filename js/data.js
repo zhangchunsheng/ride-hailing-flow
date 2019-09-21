@@ -823,6 +823,10 @@ var dataSource = [{
 var geoCoords = {};//orderId:[longitude,latitude]
 var keyStart = "";
 var keyEnd = "";
+var startLongitude = 0;
+var startLatitude = 0;
+var endLongitude = 0;
+var endLatitude = 0;
 for(var i in orderData.orders) {
     keyStart = "start" + orderData.orders[i][0];
     keyEnd = "end" + orderData.orders[i][0];
@@ -831,8 +835,12 @@ for(var i in orderData.orders) {
         end: keyEnd,
         value: orderData.orders[i][0]
     });
-    geoCoords[keyStart] = [orderData.orders[i][1],orderData.orders[i][2]];
-    geoCoords[keyEnd] = [orderData.orders[i][3],orderData.orders[i][4]];
+    startLongitude = orderData.orders[i][1].toFixed(4);
+    startLatitude = orderData.orders[i][2].toFixed(4);
+    endLongitude = orderData.orders[i][3].toFixed(4);
+    endLatitude = orderData.orders[i][4].toFixed(4);
+    geoCoords[keyStart] = [startLongitude,startLatitude];
+    geoCoords[keyEnd] = [endLongitude,endLatitude];
 }
 console.log(geoCoords);
 
